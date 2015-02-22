@@ -29,3 +29,23 @@ Everything is performed in 3 main steps:
   * Double check to get rid of irrelevant columns
   * Figures out the mean and stores in an output friendly ***tidy*** dataset
 * Export all data - This section simply saves to the tidy_data.txt file
+
+## Data
+The following files are used in this data set: 
+* 'README.txt' (Not imported)
+* 'features_info.txt': Shows information about the variables used on the feature vector. (Not imported)
+* 'features.txt': List of all features.
+* 'activity_labels.txt': Links the class labels with their activity name.
+* 'train/X_train.txt': Training set.
+* 'train/y_train.txt': Training labels.
+* 'test/X_test.txt': Test set.
+* 'test/y_test.txt': Test labels.
+
+## Variables
+Each imported data set has a variable with a name that matches the filename, except features, which I renamed coumn_names.  I only did this because I got confused later on in the code as to what the heck the features variable actually was.
+* combined_data - merged data from testing and training data
+* headers - vector of labels to be used in the final output
+* data_labels - prune data to remove all irrelevant columns
+* melt_data - reformat of data, stacking columns with matching names
+* output_data - reformat into a format that is conducive to executing the mean function, then figure out the mean of everything
+
