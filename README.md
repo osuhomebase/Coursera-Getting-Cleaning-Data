@@ -16,7 +16,7 @@ If these libraries are not already installed, run the following:
 install.packages("data.table")
 install.packages("reshape2")
 ```
-## Steps to work on this course project
+## Steps to run this script
 
 1. All data has been downloaded and stored in the github repo.  The original data was obtained here: [FUCI HAR Dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
 2. Clone this repo to your workstation
