@@ -17,15 +17,15 @@ This project requires the libraries data.table and [reshape2](http://cran.r-proj
 
 Everything is performed in 3 main steps:
 * Load all data - The code in this section does the following:
-*   Loads all data from files
-*   Adds header rows to data frames with column names from the features.txt file
+  * Loads all data from files
+  * Adds header rows to data frames with column names from the features.txt file
 * Clean all data - The code in this section does the following:
-*   Extracts only the measurements on the mean and standard deviation for each statement.  This is done by removing all other irrelevant columns.
-*   Builds the X and Y for test and training datasets and adds appropriate column names
-*   Binds X and Y for both test and training data
+  * Extracts only the measurements on the mean and standard deviation for each statement.  This is done by removing all other irrelevant columns.
+  * Builds the X and Y for test and training datasets and adds appropriate column names
+  * Binds X and Y for both test and training data
 * Merge all data - The code in this section does the following:
-*   Merges testing and training data
-*   Adds header columns to the merged data set
-*   Double check to get rid of irrelevant columns
-*   Figures out the mean and stores in an output friendly ***tidy*** dataset
+  * Merges testing and training data
+  * Adds header columns to the merged data set
+  * Double check to get rid of irrelevant columns
+  * Figures out the mean and stores in an output friendly ***tidy*** dataset
 * Export all data - This section simply saves to the tidy_data.txt file
