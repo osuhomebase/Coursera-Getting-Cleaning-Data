@@ -5,7 +5,9 @@ require("data.table")
 require("reshape2")
 
 ####################################################
+####################################################
 ## Load all data
+####################################################
 ####################################################
 
 ## read column names into data frame
@@ -35,10 +37,10 @@ subject_test <- read.table("./test/subject_test.txt")
 subject_train <- read.table("./train/subject_train.txt")
 
 
-
-
+####################################################
 ####################################################
 ## Clean data
+####################################################
 ####################################################
 
 ## limit results to only mean/standard deviation
@@ -62,7 +64,7 @@ testing_data <- cbind(as.data.table(subject_test), y_test, X_test)
 
 
 ####################################################
-## Train data
+## Training data
 ####################################################
 ## Extract only the measurements on the mean and standard deviation for each measurement.
 X_train = X_train[,limiting_vector]
@@ -82,11 +84,21 @@ training_data <- cbind(as.data.table(subject_train), y_train, X_train)
 ## Merge test and training data
 combined_data = rbind(testing_data, training_data)
 
-id_labels   = c("subject", "Activity_ID", "Activity_Label")
-data_labels = setdiff(colnames(data), id_labels)
-melt_data      = melt(data, id = id_labels, measure.vars = data_labels)
+## headers
+headers   = c("subject", "Activity_ID", "Activity_Label")
+## only pull columns in data with headers that match our data labels
+data_labels = setdiff(colnames(data), headers)
+## stack matching columns into a single column of data
+melt_data      = melt(data, id = headers, measure.vars = data_labels)
+## Convert data from a long format, to a wide format, then figure out the mean
+output_data   = dcast(melt_data, subject + Activity_Label ~ variable, mean)
 
-## Apply mean function to dataset using dcast function
-tidy_data   = dcast(melt_data, subject + Activity_Label ~ variable, mean)
 
-write.table(tidy_data, file = "./tidy_data.txt",row.name=FALSE )
+####################################################
+####################################################
+## Save data to file
+####################################################
+####################################################
+
+## Finally!  output everything to the tidy_data file
+write.table(output_data, file = "./tidy_data.txt",row.name=FALSE )
